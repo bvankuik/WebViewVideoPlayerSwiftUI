@@ -13,6 +13,7 @@
 		89BD3BE523D5872A000F764E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89BD3BE423D5872A000F764E /* Assets.xcassets */; };
 		89BD3BE823D5872A000F764E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89BD3BE723D5872A000F764E /* Preview Assets.xcassets */; };
 		89BD3BEB23D5872A000F764E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89BD3BE923D5872A000F764E /* LaunchScreen.storyboard */; };
+		89BD3BF323D58B5C000F764E /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BD3BF223D58B5C000F764E /* WebView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		89BD3BE723D5872A000F764E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		89BD3BEA23D5872A000F764E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89BD3BEC23D5872A000F764E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89BD3BF223D58B5C000F764E /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				89BD3BE923D5872A000F764E /* LaunchScreen.storyboard */,
 				89BD3BEC23D5872A000F764E /* Info.plist */,
 				89BD3BE623D5872A000F764E /* Preview Content */,
+				89BD3BF223D58B5C000F764E /* WebView.swift */,
 			);
 			path = WebViewVideoPlayer;
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				89BD3BDF23D58729000F764E /* AppDelegate.swift in Sources */,
+				89BD3BF323D58B5C000F764E /* WebView.swift in Sources */,
 				89BD3BE123D58729000F764E /* SceneDelegate.swift in Sources */,
 				89BD3BE323D58729000F764E /* ContentView.swift in Sources */,
 			);

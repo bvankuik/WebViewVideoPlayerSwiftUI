@@ -9,8 +9,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var status = ""
+    @State var url = URL.blank
+
     var body: some View {
-        Text("Hello, World!")
+        HStack {
+            WebView(status: self.$status, url: self.$url)
+                .background(Color.gray)
+            
+            Button("Load") {
+                self.url = URL(string: "assets-library://asset/2uneKmW?ext=mp4")!
+            }
+            Spacer()
+            Text(self.status)
+                .frame(width: .infinity)
+        }
     }
 }
 
