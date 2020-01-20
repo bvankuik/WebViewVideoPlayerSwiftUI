@@ -20,15 +20,12 @@ struct WebView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: WKWebView, context: Context) {
-        print("updateUIView")
         guard !urlString.isEmpty else {
             return
         }
         
         if let url = URL(string: self.urlString) {
             uiView.load(URLRequest(url: url))
-        } else {
-            print("Illegal URL")
         }
     }
     
