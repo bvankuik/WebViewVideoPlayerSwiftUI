@@ -33,8 +33,7 @@ struct ContentView: View {
             WebView(urlString: self.$urlString, status: self.$status)
             
             Button("Load") {
-//                self.urlString = "assets-library://asset/2uneKmW?ext=mp4"
-                self.urlString = "https://www.example.com"
+                self.urlString = "https://sample-videos.com/video123/mp4/240/big_buck_bunny_240p_1mb.mp4"
             }
             Spacer()
             StatusText(status: self.$status)
