@@ -35,6 +35,8 @@ struct ContentView: View {
             Button("Load") {
                 self.urlString = "https://sample-videos.com/video123/mp4/240/big_buck_bunny_240p_1mb.mp4"
             }
+            Text("Sample courtesy of sample-videos.com")
+                .font(.footnote)
             Spacer()
             StatusText(status: self.$status)
         }
