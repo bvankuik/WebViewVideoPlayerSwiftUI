@@ -8,21 +8,36 @@
 
 import SwiftUI
 
+struct StatusText: View {
+    @Binding var status: WebView.Status
+    var statusString: String {
+        switch self.status {
+        default:
+            return ""
+        }
+    }
+    
+    var body: some View {
+        Text(self.statusString)
+        .lineLimit(1)
+
+    }
+}
+
 struct ContentView: View {
     @State var urlString = ""
-    @State var statusString = ""
+    @State var status: WebView.Status = .idle
     
     var body: some View {
         VStack(spacing: 20) {
-            WebView(urlString: self.$urlString, statusString: self.$statusString)
+            WebView(urlString: self.$urlString, status: self.$status)
             
             Button("Load") {
 //                self.urlString = "assets-library://asset/2uneKmW?ext=mp4"
                 self.urlString = "https://www.example.com"
             }
             Spacer()
-            Text("Status: " + self.statusString)
-            .lineLimit(1)
+            StatusText(status: self.$status)
         }
         .padding()
         .background(Color.gray)

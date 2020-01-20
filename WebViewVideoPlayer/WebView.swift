@@ -10,8 +10,14 @@ import SwiftUI
 import WebKit
 
 struct WebView: UIViewRepresentable {
+    enum Status {
+        case idle
+        case loading(status: String)
+        case error(message: String)
+    }
+    
     @Binding var urlString: String
-    @Binding var statusString: String
+    @Binding var status: Status
     
     func makeUIView(context: Context) -> WKWebView {
         let webView = WKWebView()
@@ -20,12 +26,13 @@ struct WebView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: WKWebView, context: Context) {
-        guard !urlString.isEmpty else {
-            return
-        }
-        
-        if let url = URL(string: self.urlString) {
-            uiView.load(URLRequest(url: url))
+        switch self.status {
+        case .idle:
+            if let url = URL(string: self.urlString) {
+                uiView.load(URLRequest(url: url))
+            }
+        default:
+            break
         }
     }
     
@@ -39,23 +46,23 @@ extension WebView {
         var parent: WebView
         
         func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-//            self.parent.statusString = "Starting"
+          self.parent.status = .loading(status: "Starting")
         }
         
         func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-//            self.parent.statusString = "Loading..."
+            self.parent.status = .loading(status: "Loading")
         }
         
         func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-            self.parent.statusString = error.localizedDescription
+            self.parent.status = .error(message: error.localizedDescription)
         }
         
         func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-            self.parent.statusString = error.localizedDescription
+            self.parent.status = .error(message: error.localizedDescription)
         }
         
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-            self.parent.statusString = "Finished loading"
+            self.parent.status = .idle
         }
         
         init(_ parent: WebView) {
@@ -66,7 +73,7 @@ extension WebView {
 
 struct WebView_Previews: PreviewProvider {
     static var previews: some View {
-        WebView(urlString: .constant(""), statusString: .constant(""))
+        WebView(urlString: .constant(""), status: .constant(.idle))
             .background(Color.gray)
             .previewDevice("iPhone 8")
     }
